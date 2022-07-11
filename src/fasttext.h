@@ -144,6 +144,10 @@ class FastText {
   std::vector<std::pair<std::string, Vector>> getNgramVectors(
       const std::string& word) const;
 
+  std::vector<std::pair<real, std::string>> getNNByVec(
+      const std::vector<float>& queryVec,
+      int32_t k);
+
   std::vector<std::pair<real, std::string>> getNN(
       const std::string& word,
       int32_t k);

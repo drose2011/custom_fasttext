@@ -558,6 +558,18 @@ void FastText::lazyComputeWordVectors() {
   }
 }
 
+std::vector<std::pair<real, std::string>> FastText::getNNByVec(
+    const std::vector<float>& stdquery,
+    int32_t k) {
+  Vector query(args_->dim);
+
+  query.loadStdVec(stdquery);
+
+  lazyComputeWordVectors();
+  assert(wordVectors_);
+  return getNN(*wordVectors_, query, k, {});
+}
+
 std::vector<std::pair<real, std::string>> FastText::getNN(
     const std::string& word,
     int32_t k) {

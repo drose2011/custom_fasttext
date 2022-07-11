@@ -45,6 +45,7 @@ class Vector {
   inline int64_t size() const {
     return data_.size();
   }
+  void loadStdVec(const std::vector<float>& stdvec);
   void zero();
   void mul(real);
   real norm() const;

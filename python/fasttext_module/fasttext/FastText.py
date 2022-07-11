@@ -137,6 +137,9 @@ class _FastText(object):
         self.f.getSentenceVector(b, text)
         return np.array(b)
 
+    def get_nearest_neighbors_by_vec(self, queryVec, k=10, on_unicode_error='strict'):
+        return self.f.getNNByVec(queryVec, k, on_unicode_error)
+
     def get_nearest_neighbors(self, word, k=10, on_unicode_error='strict'):
         return self.f.getNN(word, k, on_unicode_error)
 

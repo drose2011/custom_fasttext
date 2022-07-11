@@ -19,6 +19,13 @@ namespace fasttext {
 
 Vector::Vector(int64_t m) : data_(m) {}
 
+void Vector::loadStdVec(const std::vector<float>& stdvec) {
+  assert(stdvec.size() == size());
+  for(int64_t i = 0; i < size(); i++) {
+    data_[i] = (real)stdvec[i];
+  }
+}
+
 void Vector::zero() {
   std::fill(data_.begin(), data_.end(), 0.0);
 }

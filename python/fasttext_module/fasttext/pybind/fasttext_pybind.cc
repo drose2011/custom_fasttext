@@ -486,6 +486,14 @@ PYBIND11_MODULE(fasttext_pybind, m) {
              fasttext::Vector& vec,
              const std::string word) { m.getWordVector(vec, word); })
       .def(
+          "getNNByVec",
+          [](fasttext::FastText& m,
+             const std::vector<float>& queryVec,
+             int32_t k,
+             const char* onUnicodeError) {
+            return castToPythonString(m.getNNByVec(queryVec, k), onUnicodeError);
+          })
+      .def(
           "getNN",
           [](fasttext::FastText& m,
              const std::string& word,
